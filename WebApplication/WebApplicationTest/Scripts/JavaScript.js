@@ -16,22 +16,20 @@ function ageChecker()
         alert("Age must be in between 15 and 100!");
     }
 }*/
-
 function addressCheck()
 {
     var check = document.querySelector("#checkAddress").value;          
-    if (check == 0) {
+    if (check === 0) {
         var address2 = document.querySelector("#address2");
         var treeEl = document.createElement("treeEl");
-        treeEl.innerText = "Permanent Address: ";
+        treeEl.innerText = "Mailing Address: ";
         var add1 = document.createElement("input");
         add1.setAttribute("type", "text");
         address2.appendChild(treeEl);
         address2.appendChild(add1);
     }
-}
+}   
 function locationPopulate(json) {
-    // var json = { "zip_code": "10017", "lat": 0.711263, "lng": -1.29106, "city": "New York", "state": "NY", "timezone": { "timezone_identifier": "America\/New_York", "timezone_abbr": "EDT", "utc_offset_sec": -14400, "is_dst": "T" }, "acceptable_city_names": [{ "city": "Grand Central", "state": "NY" }, { "city": "Manhattan", "state": "NY" }, { "city": "Nyc", "state": "NY" }] };
     json = JSON.parse(json);
     var state = document.getElementById("State");
     var city = document.getElementById("City");
