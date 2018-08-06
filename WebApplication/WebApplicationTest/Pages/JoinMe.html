@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
-    <script src="../Scripts/JavaScript.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>JoinMe</title>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/CustomJS/JavaScript.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
 </head>
 <body>
     <div class="jumbotron">
@@ -27,43 +28,39 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="JoinMe.html">Join Me</a>
                     </li>
-
                 </ul>
             </div>
         </nav>
     </div>
     <!-- Form-->
-    <form class="needs-validation" style="margin-left:10px;" novalidate>
+    <h2 style="margin-left: 10px;">Join Me!</h2>
+    <form class="needs-validation" style="margin-left:10px;" novalidate id="FullForm">
         <div class="form-row">
             <div class="col-md-4 mb-3">
-                <label for="validationCustom01">First name</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
-                <div class="valid-feedback">
-
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First name" required>
+                <div class="invalid-feedback">
+                    Please provide a valid first name.
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Last name</label>
-                <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" required>
-                <div class="valid-feedback">
-
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last name" required>
+                <div class="invalid-feedback">
+                    Please provide a valid last name.
                 </div>
             </div>
-            <div class="col-md-1 mb-3">
-                <label for="validationCustom06">Age</label>
-                <input type="text" class="form-control" id="validationCustom06" placeholder="Age" required>
-                <div class="valid-feedback">
-
-                </div>
-            </div>
+        </div>
+        <h4>Address</h4>
+        <div class="form-row">
             <div class="col-md-4 mb-3">
-                <label for="validationCustom06">Address Line 1</label>
-                <input type="text" class="form-control" id="validationCustom22" placeholder="Address Line 1" required>
-                <div class="valid-feedback">
-
+                <label for="houseNumber">House Number</label>
+                <input type="text" class="form-control" id="houseNumber" placeholder="House Number" required>
+                <div class="invalid-feedback">
+                    Please provide a House Number
                 </div>
-                <div class="form-group">
-                    <label for="Address1">Mailing Address Is Not The Same As </label>
+                <div class="form-group" style="margin-left:10px">
+                    <label for="Address1">Mailing Address Is Not The Same As Permanent Address</label>
                     <select id="checkAddress" onchange="addressCheck();">
                         <option value="">Select</option>
                         <option value="1">Yes</option>
@@ -73,13 +70,21 @@
                 <div class="form-group" id="address2"></div>
             </div>
             <div class="col-md-4 mb-3">
-                <label for="validationCustom06">Address Line 2 (Optional)</label>
-                <input type="text" class="form-control" id="validationCustom23" placeholder="Address Line 2">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" id="street" placeholder="Street" required>
+                <div class="invalid-feedback">
+                    Please provide a Street
+                </div>
             </div>
-        </div>
-        <div class="form-row">
+            <div class="col-md-2 mb-3">
+                <label for="Country">Country</label>
+                <input type="text" class="form-control" id="Country" placeholder="Country" required>
+                <div class="invalid-feedback">
+                    Please provide a Country
+                </div>
+            </div>
             <div class="col-md-3 mb-3">
-                <label for="validationCustom05">Zip</label>
+                <label for="Zip">Zip</label>
                 <input type="text" class="form-control" id="zipcode" placeholder="Zip" onblur="checkZipcode();" required>
                 <div class="invalid-feedback">
                     Please provide a valid zip.
@@ -100,24 +105,32 @@
                 </div>
             </div>
         </div>
+        <h4>Phone</h4>
         <div class="form-row">
             <div class="col-md-1 mb-3">
-                <label for="validationCustom05">Area Code</label>
-                <input type="text" class="form-control" id="validationCustom11" placeholder="Area" required>
+                <label for="countryCode">Country Code</label>
+                <input type="text" class="form-control" id="countryCode" placeholder="Country Code" required>
+                <div class="invalid-feedback">
+                    Please provide a valid Country Code.
+                </div>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="area">Area Code</label>
+                <input type="text" class="form-control" id="area" placeholder="Area" required>
                 <div class="invalid-feedback">
                     Please provide a valid Area Code.
                 </div>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="validationCustom05">Phone Number</label>
-                <input type="text" class="form-control" id="validationCustom19" placeholder="Number" required>
+                <label for="number">Phone Number</label>
+                <input type="text" class="form-control" id="number" placeholder="Number" required>
                 <div class="invalid-feedback">
                     Please provide a valid Number.
                 </div>
             </div>
             <div class="col-md-1 mb-3">
-                <label for="validationCustom06">Extension</label>
-                <input type="text" class="form-control" id="validationCustom66" placeholder="Extension">
+                <label for="ext">Extension</label>
+                <input type="text" class="form-control" id="ext" placeholder="Extension">
             </div>
         </div>
         <div class="form-group">
@@ -131,7 +144,27 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit" >Submit form</button>
+        <button class="btn btn-primary" type="submit">Submit form</button>
     </form>
+    <script>
+        //JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 </html>

@@ -1,26 +1,8 @@
-﻿/*function nameCheck()
+﻿function addressCheck()
 {
-    var firstName = document.querySelector("#first_name").value;
-    var lastName = document.querySelector("#last_name").value;
-    if (firstName === lastName)
-    {
-        alert("Can't have same first and last name");
-
-   }
-}
-function ageChecker()
-{
-    var age = document.querySelector("#age").value;
-    if (age < 15 || age > 100)
-    {
-        alert("Age must be in between 15 and 100!");
-    }
-}*/
-function addressCheck()
-{
-    var check = document.querySelector("#checkAddress").value;          
-    if (check === 0) {
-        var address2 = document.querySelector("#address2");
+    var check = document.querySelector('#checkAddress').value;          
+    if (check == 0) {
+        var address2 = document.querySelector('#address2');
         var treeEl = document.createElement("treeEl");
         treeEl.innerText = "Mailing Address: ";
         var add1 = document.createElement("input");
@@ -57,6 +39,44 @@ function checkZipcode() {
     };
     xhr.send();
 }
+
+$('#FullForm').on(function (e) {
+    e.preventDefault();
+    var person =
+        {
+            'Pid': 6,
+            'firstName': $('#firstName').val(),
+            'lastName': $('#lastName').val(),
+            'Address': {
+                'Pid': 6,
+                'houseNum': $('#houseNumber').val(),
+                'street': $('#street').val(),
+                'city': $('#City').val(),
+                'State': $('#State').val(),
+                'Country': $('#Country').val(),
+                'zipCode': $('Zip').val()
+            },
+            'Phone': {
+                'Pid': 6,
+                'countrycode': $('#countryCode').val(),
+                'areaCode': $('#area').val(),
+                'number': $('number').val(),
+                'ext': $('#ext').val()
+            }
+        };
+    $.ajax({
+        type: 'POST',
+        url: 'http://russellbio.azurewebsites.net/api/Person',
+        data: JSON.stringify(person),
+        dataType: 'json',
+        success: function (newPerson) {
+            alert(newPerson);
+        },
+        Error: function () {
+            alert("ERROR");
+        }
+    });
+});
 
 
 
