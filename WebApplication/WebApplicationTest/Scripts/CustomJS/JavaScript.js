@@ -40,43 +40,6 @@ function checkZipcode() {
     xhr.send();
 }
 
-$('#FullForm').on(function (e) {
-    e.preventDefault();
-    var person =
-        {
-            'Pid': 6,
-            'firstName': $('#firstName').val(),
-            'lastName': $('#lastName').val(),
-            'Address': {
-                'Pid': 6,
-                'houseNum': $('#houseNumber').val(),
-                'street': $('#street').val(),
-                'city': $('#City').val(),
-                'State': $('#State').val(),
-                'Country': $('#Country').val(),
-                'zipCode': $('Zip').val()
-            },
-            'Phone': {
-                'Pid': 6,
-                'countrycode': $('#countryCode').val(),
-                'areaCode': $('#area').val(),
-                'number': $('number').val(),
-                'ext': $('#ext').val()
-            }
-        };
-    $.ajax({
-        type: 'POST',
-        url: 'http://russellbio.azurewebsites.net/api/Person',
-        data: JSON.stringify(person),
-        dataType: 'json',
-        success: function (newPerson) {
-            alert(newPerson);
-        },
-        Error: function () {
-            alert("ERROR");
-        }
-    });
-});
 
 
 

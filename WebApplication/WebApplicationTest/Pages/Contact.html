@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <title>Contact Page</title>
 </head>
 <body>
@@ -37,12 +38,12 @@
     </div>
     <!--Forms-->
     <div class="input-group">
-        <form class="form-group" action="Success.html" method="get">
+        <form class="form-group" id="FullForm1">
             <div class="col-md-10 mb-2">
                 <label for="Name">Name:</label>
                 <input type="text" class="form-control" id="Name" placeholder="Name" required>
-                <div class="valid-feedback">
-                    hey
+                <div class="invalid-feedback">
+                
                 </div>
             </div>
             <div class="col-md-10 mb-2">
@@ -67,9 +68,32 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary" id ="submitting"type="submit">Submit</button>
             </div>  
         </form>
     </div>
+    <script>
+        $("#FullForm1").submit(function () {
+            var contact =
+                {
+                    'Name': $('#Name').val(),
+                    'Email': $('Email').val(),
+                    'Message': $('user_message').val()
+                };
+            $.ajax({
+                type: 'POST',
+                url: 'http://russellbio.azurewebsites.net/api/Message',
+                data: JSON.stringify(contact),
+                contentType: "application/json",
+                dataType: 'JSON',
+                success: function () {
+                    alert("Success");
+                },
+                Error: function () {
+                    alert("ERROR");
+                }
+            });
+        });
+    </script>
 </body>
 </html>

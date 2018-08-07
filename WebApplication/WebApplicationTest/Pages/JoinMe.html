@@ -147,6 +147,10 @@
         <button class="btn btn-primary" type="submit">Submit form</button>
     </form>
     <script>
+        /*document.getElementById("FullForm").onsubmit = function () { click() };
+        function click() {
+            alert("called");
+        }*/
         //JavaScript for disabling form submissions if there are invalid fields
         (function () {
             'use strict';
@@ -165,6 +169,44 @@
                 });
             }, false);
         })();
+
+        $("#FullForm").submit(function () {
+            var person =
+                {
+                    'Pid': 0,
+                    'firstName': $('#firstName').val(),
+                    'lastName': $('#lastName').val(),
+                    'Address': {
+                        'Pid': 0,
+                        'houseNum': $('#houseNumber').val(),
+                        'street': $('#street').val(),
+                        'city': $('#City').val(),
+                        'State': $('#State').val(),
+                        'Country': $('#Country').val(),
+                        'zipCode': $('Zip').val()
+                    },
+                    'Phone': {
+                        'Pid': 0,
+                        'countrycode': $('#countryCode').val(),
+                        'areaCode': $('#area').val(),
+                        'number': $('#number').val(),
+                        'ext': $('#ext').val()
+                    }
+                };
+            $.ajax({
+                type: 'POST',
+                url: 'http://russellbio.azurewebsites.net/api/Person',
+                data: JSON.stringify(person),
+                contentType:"application/json",
+                dataType: 'JSON',
+                success: function () {
+                    alert("Success");
+                },
+                Error: function () {
+                    alert("ERROR");
+                }
+            });
+        });
     </script>
 </body>
 </html>
